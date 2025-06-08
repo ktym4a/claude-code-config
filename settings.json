@@ -1,11 +1,11 @@
 {
-  "model": "opus",
-  "theme": "dark",
   "cleanupPeriodDays": 30,
   "env": {
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "DISABLE_COST_WARNINGS": "0",
     "SHELL": "/opt/homebrew/bin/fish"
   },
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "model": "opus",
+  "theme": "dark"
 }
