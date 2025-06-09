@@ -1,4 +1,4 @@
-# Claude Global Configuration
+# Claude Code Global Configuration
 
 ## Role and Context
 
