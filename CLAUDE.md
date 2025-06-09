@@ -6,7 +6,7 @@ You are an expert software developer specializing in TypeScript and Deno develop
 
 ## Communication Language
 
-- **Claude との会話**: 日本語で応答してください
+- **Conversation with Claude**: Respond in Japanese (日本語で応答してください)
 - **Code comments**: English only
 - **Commit messages**: English only  
 - **Documentation**: English only
@@ -62,17 +62,17 @@ Apply higher levels for:
 
 ### MANDATORY: Before ANY Implementation
 
-1. **実装計画の作成** (Implementation Planning)
+1. **Implementation Planning**
    - Read relevant files first to understand context
-   - 要件の明確化と確認
-   - アーキテクチャの設計 - ultrathink for complex systems
-   - ステップバイステップの実装計画
-   - 予想される課題と解決策
+   - Clarify and confirm requirements
+   - Design architecture - ultrathink for complex systems
+   - Create step-by-step implementation plan
+   - Identify expected challenges and solutions
 
-2. **Context7 を使用した検証** (Validation with Context7)
-   - 必ず Context7 を使用して最新のライブラリドキュメントを確認
-   - API の使用方法を検証
-   - ベストプラクティスの確認
+2. **Validation with Context7**
+   - Always use Context7 to check latest library documentation
+   - Verify API usage patterns
+   - Confirm best practices
 
 ### Taskmaster Workflow (When Applicable)
 
@@ -174,41 +174,41 @@ function add(a: number, b: number): number {
 
 When working with Taskmaster-managed projects:
 
-1. **タスク確認**: 
-   - 現在のタスク内容を確認
-   - 依存関係の確認
-   - 複雑度の評価
+1. **Task Confirmation**: 
+   - Verify current task content
+   - Check dependencies
+   - Evaluate complexity
 
-2. **実装アプローチ**:
-   - タスクを subtasks に分解（必要に応じて）
-   - 各 subtask の TDD 実装
-   - 進捗の記録と更新
+2. **Implementation Approach**:
+   - Break task into subtasks (if needed)
+   - TDD implementation for each subtask
+   - Record and update progress
 
-3. **タスク更新**:
-   - 実装中の発見事項を記録
-   - 関連タスクへの影響を評価
-   - 必要に応じて新規タスクを追加
+3. **Task Updates**:
+   - Document discoveries during implementation
+   - Evaluate impact on related tasks
+   - Add new tasks as needed
 
 ### For Implementation Tasks
-1. **要件確認**: 実装内容の理解を日本語で確認
-2. **実装計画**: ステップバイステップの計画を提示 (think hard for complex features)
-3. **Context7 検証**: 必要なライブラリのドキュメントを確認
-4. **TDD実装**: 
-   - テストコードを先に提示（失敗することを確認）
-   - 実装コードを段階的に作成
-   - リファクタリング提案
+1. **Requirements Confirmation**: Understand implementation requirements (confirm in Japanese)
+2. **Implementation Plan**: Present step-by-step plan (think hard for complex features)
+3. **Context7 Verification**: Check necessary library documentation
+4. **TDD Implementation**: 
+   - Present test code first (confirm it fails)
+   - Create implementation code incrementally
+   - Suggest refactoring
 
 ### For Code Reviews
-1. **良い点**: 現在のコードの強み
-2. **改善提案**: 具体的な改善点と理由
-3. **代替案**: より良い実装方法（あれば）
-4. **パフォーマンス**: 最適化の機会があれば提案
+1. **Strengths**: Current code's strong points
+2. **Improvement Suggestions**: Specific improvements with reasoning
+3. **Alternatives**: Better implementation methods (if any)
+4. **Performance**: Optimization opportunities if applicable
 
 ### For Architecture Design
-1. **要件分析**: ビジネス要件と技術要件の整理
-2. **設計案**: シンプルで拡張可能な設計 (ultrathink for complex systems)
-3. **トレードオフ**: 各選択肢の利点と欠点
-4. **実装ロードマップ**: 段階的な実装計画
+1. **Requirements Analysis**: Organize business and technical requirements
+2. **Design Proposal**: Simple and extensible design (ultrathink for complex systems)
+3. **Trade-offs**: Advantages and disadvantages of each option
+4. **Implementation Roadmap**: Phased implementation plan
 
 ## Important Notes
 
