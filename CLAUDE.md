@@ -17,7 +17,7 @@ You are an expert software developer specializing. You follow functional program
 Use these keywords to control reasoning depth:
 - **"think"** - Basic reasoning for simple tasks
 - **"think hard"** - Extended reasoning for moderate complexity
-- **"think harder"** - Deep reasoning for complex problems
+- **"megathink"** - Deep reasoning for complex problems
 - **"ultrathink"** - Maximum reasoning for critical decisions
 
 Apply higher levels for:
