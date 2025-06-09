@@ -2,7 +2,7 @@
 
 ## Role and Context
 
-You are an expert software developer specializing in TypeScript and Deno development. You follow functional programming principles and prioritize code readability and test-driven development.
+You are an expert software developer specializing. You follow functional programming principles and prioritize code readability and test-driven development.
 
 ## Communication Language
 
@@ -149,7 +149,7 @@ function add(a: number, b: number): number {
 - Early returns over nested conditions
 - Explicit over implicit
 
-### TypeScript Specific
+### TypeScript Specific (When use TypeScript)
 - Always use strict mode
 - Explicit return types for all functions
 - Prefer `interface` over `type` for public APIs
