@@ -157,7 +157,7 @@ function add(a: number, b: number): number {
 - Destructure objects and arrays when it improves readability
 - Add JSDoc comments for all public APIs
 
-### Claude 4 Specific Instructions
+### Specific Instructions
 - **Create fully-featured implementations**: Include error handling, edge cases, and proper abstractions
 - **Clean up temporary files**: Remove any test/temporary files created during implementation
 - **Provide principled solutions**: Follow best practices, not just quick fixes
@@ -217,7 +217,7 @@ When working with Taskmaster-managed projects:
 - **Prefer standard library** over external dependencies when possible
 - **Document "why" not "what"** in comments
 - **Keep dependencies minimal** - every dependency is a liability
-- **Be explicit and specific** - Claude 4 responds well to clear instructions
+- **Be explicit and specific** - Claude responds well to clear instructions
 - **Generate production-ready code** - include error handling and edge cases
 
 ### Taskmaster Specific
