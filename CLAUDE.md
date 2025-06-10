@@ -33,6 +33,7 @@ Apply higher levels for:
 2. **KISS (Keep It Simple, Stupid)**: Choose simple solutions over clever ones
 3. **Single Responsibility Principle**: Each function/module should do one thing well
 4. **YAGNI (You Aren't Gonna Need It)**: Don't add functionality until it's actually needed
+5. **Iterative Development**: Build features incrementally through small, verified steps
 
 ### Programming Paradigm
 - **Functional Programming First**: 
@@ -117,28 +118,56 @@ When working on projects with Taskmaster, follow this structured approach:
      ```
 
 ### Test-Driven Development (TDD)
-**MANDATORY**: Always follow Red-Green-Refactor cycle
-1. **Red**: Write a failing test first that tests actual requirements
-2. **Green**: Write minimal code to make the test pass
+**MANDATORY**: Always follow Red-Green-Refactor cycle iteratively
+1. **Red**: Write ONE failing test at a time
+2. **Green**: Write minimal code to make ONLY that test pass
 3. **Refactor**: Improve code while keeping tests green
-4. **Validate**: Use independent validation to prevent overfitting
+4. **Repeat**: Add next test case and repeat the cycle
 
-Example workflow:
+**Important TDD Rules**:
+- **One test at a time**: Never write multiple tests before implementation
+- **Minimal implementation**: Only write code to pass the current failing test
+- **Incremental progress**: Build functionality through small, verified steps
+- **Continuous validation**: Run all tests after each change
+
+Example of iterative TDD workflow:
 ```typescript
-// 1. First, write the test (and verify it fails)
-Deno.test("should calculate sum of two numbers", () => {
+// Iteration 1: Basic functionality
+// 1. Write first test (RED)
+Deno.test("should add positive numbers", () => {
   assertEquals(add(2, 3), 5);
-  assertEquals(add(-1, 1), 0); // Edge case
-  assertEquals(add(0, 0), 0);   // Edge case
 });
-
-// 2. Then implement the minimal solution
+// 2. Minimal implementation (GREEN)
 function add(a: number, b: number): number {
-  return a + b;
+  return 5; // Simplest code to pass the test
+}
+// 3. Refactor
+function add(a: number, b: number): number {
+  return a + b; // Generalize the solution
 }
 
-// 3. Refactor if needed while ensuring test still passes
+// Iteration 2: Edge case
+// 1. Write next test (RED)
+Deno.test("should handle negative numbers", () => {
+  assertEquals(add(-1, 1), 0);
+});
+// 2. Implementation already passes (GREEN)
+// 3. No refactoring needed
+
+// Iteration 3: Another edge case
+// 1. Write next test (RED)
+Deno.test("should handle zero", () => {
+  assertEquals(add(0, 0), 0);
+});
+// Continue this pattern...
 ```
+
+**TDD Benefits**:
+- Ensures code is testable from the start
+- Prevents over-engineering
+- Creates comprehensive test suite
+- Documents expected behavior
+- Enables confident refactoring
 
 ## Code Style Guidelines
 
@@ -193,10 +222,13 @@ When working with Taskmaster-managed projects:
 1. **Requirements Confirmation**: Understand implementation requirements (confirm in Japanese)
 2. **Implementation Plan**: Present step-by-step plan (think hard for complex features)
 3. **Context7 Verification**: Check necessary library documentation
-4. **TDD Implementation**: 
-   - Present test code first (confirm it fails)
-   - Create implementation code incrementally
-   - Suggest refactoring
+4. **TDD Implementation (Iterative)**: 
+   - Write ONE test case (show it fails)
+   - Implement minimal code to pass ONLY that test
+   - Refactor if needed
+   - Present next test case
+   - Repeat until feature is complete
+   - Show cumulative test results after each iteration
 
 ### For Code Reviews
 1. **Strengths**: Current code's strong points
@@ -246,13 +278,47 @@ Claude:
 
 [Context7 での検証]
 
-TDD で実装を進めます。最初にテストを書きます：
+TDD で実装を進めます。一つずつテストを書いて、段階的に機能を構築していきます。
 
-[テストコード - 失敗することを確認]
+## Iteration 1: 基本的なサーバー起動
+最初のテストを書きます：
 
-次に、このテストを通すための最小限の実装を行います：
+```typescript
+// server_test.ts
+Deno.test("should start server on specified port", async () => {
+  const server = createServer({ port: 8000 });
+  assertEquals(server.port, 8000);
+  await server.close();
+});
+```
 
-[実装コード]
+このテストは失敗します（RED）。最小限の実装を行います：
+
+```typescript
+// server.ts
+export function createServer(options: { port: number }) {
+  return {
+    port: options.port,
+    close: async () => {}
+  };
+}
+```
+
+テストが通りました（GREEN）。次のテストに進みます。
+
+## Iteration 2: HTTPリクエストの処理
+次のテストを追加：
+
+```typescript
+Deno.test("should handle GET requests", async () => {
+  const server = createServer({ port: 8001 });
+  const response = await fetch("http://localhost:8001");
+  assertEquals(response.status, 200);
+  await server.close();
+});
+```
+
+[以降、一つずつテストを追加しながら実装を進めていきます...]
 ```
 
 ### Taskmaster Project
