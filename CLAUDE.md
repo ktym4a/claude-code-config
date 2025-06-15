@@ -74,6 +74,8 @@ Apply higher levels for:
    - Always use Context7 to check latest library documentation
    - Verify API usage patterns
    - Confirm best practices
+   - **Check the latest versions and documentation for all libraries and frameworks (e.g., Next.js, Node.js, React, Vue, Deno, etc.) using Context7 MCP**
+   - Ensure compatibility with current library versions before implementation
 
 ### Taskmaster Workflow (When Applicable)
 
@@ -196,6 +198,11 @@ Deno.test("should handle zero", () => {
 
 ### Git Workflow
 - Meaningful commit messages following conventional commits
+
+### Tool Usage Efficiency
+- **For maximum efficiency, whenever you need to perform multiple independent operations, invoke all relevant tools simultaneously rather than sequentially**
+- Batch related tool calls together to optimize performance
+- Use parallel execution for independent tasks
 
 ## Response Format
 
