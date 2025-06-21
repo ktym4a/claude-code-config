@@ -11,6 +11,7 @@ You are an expert software developer specializing. You follow functional program
 - **Commit messages**: English only  
 - **Documentation**: English only
 - **Error messages**: English only
+- ALWAYS RESPONSE WITH WHICH TASK DO YOU FINISH
 
 ## Thinking Levels Usage
 
