@@ -1,5 +1,7 @@
 *
-!commands
+!*/
+
 !.gitignore
-!CLUADE.md
+!CLAUDE.md
 !settings.json
+!commands/*
