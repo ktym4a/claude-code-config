@@ -78,6 +78,12 @@ Apply higher levels for:
    - **Check the latest versions and documentation for all libraries and frameworks (e.g., Next.js, Node.js, React, Vue, Deno, etc.) using Context7 MCP**
    - Ensure compatibility with current library versions before implementation
 
+3. **Repository Documentation with DevinWiki**
+   - Use DevinWiki to explore GitHub repository documentation
+   - Read wiki structure to understand available documentation
+   - Ask specific questions about repository implementation details
+   - Useful for understanding third-party library internals and best practices
+
 ### Taskmaster Workflow (When Applicable)
 
 When working on projects with Taskmaster, follow this structured approach:
@@ -253,6 +259,7 @@ When working with Taskmaster-managed projects:
 ## Important Notes
 
 - **Always validate with Context7** before suggesting library usage
+- **Use DevinWiki** for exploring GitHub repository internals and implementation patterns
 - **Never skip the TDD process** - always show the failing test first
 - **Prefer standard library** over external dependencies when possible
 - **Document "why" not "what"** in comments
@@ -267,10 +274,344 @@ When working with Taskmaster-managed projects:
 - **Break down high-complexity tasks** (score > 5) into subtasks
 - **Maintain task context** by reviewing related tasks before implementation
 
+## Taskmaster Deep Integration
+
+### Complexity-Based Development Strategy
+
+#### Complexity Score Guidelines
+- **Score 1-3**: Direct Implementation
+  - Single responsibility tasks
+  - Clear requirements
+  - No architectural decisions
+  - Implement immediately with TDD
+
+- **Score 4-6**: Recommended Decomposition
+  - Multiple components involved
+  - Some design decisions needed
+  - Use `expand_task` with 3-5 subtasks
+  - Consider research for best practices
+
+- **Score 7-10**: Mandatory Decomposition
+  - Architectural impact
+  - Cross-system dependencies
+  - Use `expand_task` with research flag
+  - Create ADR for major decisions
+  - Consider multiple expansion levels
+
+### Task Lifecycle Management
+
+#### 1. Task Discovery Phase
+- Always start with understanding the landscape
+- Get all tasks with subtask details
+- Find the next task to work on
+- Analyze project complexity
+
+#### 2. Task Analysis Phase
+- Read task details thoroughly
+- Check dependencies and validate them
+- Review related tasks for context
+- Assess complexity and plan approach
+
+#### 3. Task Execution Phase
+- Set status to `in_progress` immediately
+- For complex tasks, expand first
+- Implement using TDD methodology
+- Update progress with discoveries
+- Handle blockers by setting `deferred` status
+
+#### 4. Task Completion Phase
+- Verify all acceptance criteria met
+- Run full test suite
+- Update status to `done`
+- Document learnings in task updates
+- Check for new tasks to add
+
+### Research Integration
+
+Use research capability when:
+- Implementing unfamiliar technology
+- Making architectural decisions
+- Optimizing performance
+- Solving complex bugs
+- Evaluating security approaches
+
+Research should include:
+- Contextual queries with relevant task IDs
+- Saving important findings to tasks or files
+- Linking research results to implementation decisions
+
+### Continuous Task Evolution
+
+#### Adding Discovered Requirements
+- During implementation, when new requirements emerge
+- Add tasks with proper dependencies
+- Link to current implementation context
+
+#### Updating Future Tasks
+- When current implementation affects future tasks
+- Update from specific task ID with impact description
+- Maintain task relationship integrity
+
+#### Managing Dependencies
+- Always validate after adding dependencies
+- Fix circular dependencies immediately
+- Document dependency rationale in task details
+
+### Task Prioritization Strategy
+
+1. **Critical Path First**: Tasks with most dependents
+2. **Complexity Balance**: Mix simple and complex tasks
+3. **Risk Mitigation**: High-risk tasks early
+4. **Value Delivery**: User-facing features prioritized
+
+### Documentation Through Tasks
+
+- Use task descriptions as living documentation
+- Update task details with implementation notes
+- Link ADRs to relevant tasks
+- Maintain task history for future reference
+
+## Team Development Guidelines
+
+### Pull Request Standards
+
+#### PR Creation Checklist
+- [ ] Clear, descriptive title following conventional commits
+- [ ] Comprehensive description with context
+- [ ] Link to related Taskmaster tasks
+- [ ] Include before/after examples for UI changes
+- [ ] List breaking changes explicitly
+- [ ] Add reviewers based on code ownership
+
+#### PR Description Template
+```markdown
+## Summary
+Brief description of changes and why they're needed.
+
+## Related Tasks
+- Task #ID: Description
+- Fixes #issue_number
+
+## Changes Made
+- Implementation detail 1
+- Implementation detail 2
+
+## Testing
+- [ ] Unit tests added/updated
+- [ ] Integration tests verified
+- [ ] Manual testing completed
+- [ ] Performance impact assessed
+
+## Breaking Changes
+- None / List any breaking changes
+
+## Screenshots (if applicable)
+Before: [screenshot]
+After: [screenshot]
+```
+
+### Code Review Process
+
+#### As a Reviewer
+1. **First Pass - Architecture**
+   - Does it solve the right problem?
+   - Is the approach appropriate?
+   - Are there security implications?
+
+2. **Second Pass - Implementation**
+   - Code correctness
+   - Error handling
+   - Edge cases covered
+   - Performance considerations
+
+3. **Third Pass - Maintainability**
+   - Code readability
+   - Test coverage
+   - Documentation updates
+   - Follow existing patterns
+
+#### Review Comments Guidelines
+- Be constructive and specific
+- Suggest improvements, not just problems
+- Distinguish between "must fix" and "consider"
+- Acknowledge good solutions
+
+### Documentation Standards
+
+#### Code Documentation
+- **Public APIs**: Full JSDoc with examples
+- **Complex Logic**: Inline comments explaining "why"
+- **Workarounds**: Document with issue links
+- **Type Definitions**: Clear, self-documenting names
+
+#### Project Documentation
+- **README**: Keep updated with setup instructions
+- **CONTRIBUTING**: Define workflow and standards
+- **Architecture Docs**: Update with major changes
+- **API Docs**: Auto-generate where possible
+
+### Collaboration Patterns
+
+#### Pair Programming Sessions
+- Define driver/navigator roles
+- Switch roles every 25-30 minutes
+- Document decisions made during session
+- Create follow-up tasks in Taskmaster
+
+#### Knowledge Sharing
+- Document learnings in task updates
+- Create ADRs for significant decisions
+- Share debugging strategies that worked
+- Maintain team knowledge base
+
+#### Conflict Resolution
+- Technical disagreements → Create ADR
+- Scope creep → Update Taskmaster tasks
+- Priority conflicts → Team discussion with data
+- Style disputes → Refer to agreed standards
+
+### Team Taskmaster Workflow
+
+#### Task Assignment
+- Self-assign next available task
+- Set task status to in_progress when starting
+- Coordinate on complex tasks by reviewing before starting
+
+#### Daily Sync
+- Check team member status for in-progress tasks
+- Review deferred tasks for blockers
+- Align on daily priorities
+
+#### Sprint Planning
+- Review all pending tasks
+- Analyze complexity report for estimation
+- Balance workload across team members
+
+## Performance & Security Guidelines
+
+### Performance Best Practices
+
+#### Measurement First
+- **Baseline Establishment**: Always measure before optimizing
+- **Continuous Monitoring**: Set up performance budgets
+- **Real User Metrics**: Focus on actual user experience
+- **Regression Prevention**: Automated performance tests in CI
+
+#### Optimization Strategies
+1. **Frontend Performance**
+   - Lazy loading for routes and components
+   - Image optimization (WebP, appropriate sizing)
+   - Bundle size monitoring
+   - Critical CSS inlining
+   - Resource hints (preconnect, prefetch)
+
+2. **Backend Performance**
+   - Database query optimization (N+1 prevention)
+   - Proper indexing strategies
+   - Caching layers (Redis, in-memory)
+   - Connection pooling
+   - Async/await for I/O operations
+
+3. **General Patterns**
+   ```typescript
+   // Bad: Multiple sequential calls
+   const user = await getUser(id);
+   const posts = await getUserPosts(id);
+   const comments = await getUserComments(id);
+   
+   // Good: Parallel execution
+   const [user, posts, comments] = await Promise.all([
+     getUser(id),
+     getUserPosts(id),
+     getUserComments(id)
+   ]);
+   ```
+
+### Security Best Practices
+
+#### Input Validation
+```typescript
+// Always validate and sanitize user input
+function validateUserInput(input: unknown): ValidatedInput {
+  // Type validation
+  if (typeof input !== 'string') {
+    throw new ValidationError('Invalid input type');
+  }
+  
+  // Length validation
+  if (input.length > MAX_LENGTH) {
+    throw new ValidationError('Input too long');
+  }
+  
+  // Pattern validation
+  if (!VALID_PATTERN.test(input)) {
+    throw new ValidationError('Invalid characters');
+  }
+  
+  return sanitize(input);
+}
+```
+
+#### Authentication & Authorization
+1. **Never Trust Client**: All auth checks server-side
+2. **Principle of Least Privilege**: Minimal permissions
+3. **Token Security**: Short-lived, rotate regularly
+4. **Session Management**: Secure, httpOnly cookies
+
+#### Data Protection
+- **Encryption at Rest**: Sensitive data encrypted
+- **Encryption in Transit**: Always use HTTPS
+- **PII Handling**: Minimize collection, secure storage
+- **Logging**: Never log sensitive information
+
+#### Common Vulnerabilities Prevention
+1. **SQL Injection**: Use parameterized queries
+   ```typescript
+   // Bad
+   const query = `SELECT * FROM users WHERE id = ${userId}`;
+   
+   // Good
+   const query = 'SELECT * FROM users WHERE id = ?';
+   db.query(query, [userId]);
+   ```
+
+2. **XSS Prevention**: Escape output, CSP headers
+3. **CSRF Protection**: Token validation
+4. **Rate Limiting**: Prevent abuse
+5. **Dependency Security**: Regular updates, vulnerability scanning
+
+### Security Review Checklist
+- [ ] All inputs validated and sanitized
+- [ ] Authentication properly implemented
+- [ ] Authorization checks in place
+- [ ] Sensitive data encrypted
+- [ ] Error messages don't leak information
+- [ ] Dependencies up to date
+- [ ] Security headers configured
+- [ ] Rate limiting implemented
+- [ ] Audit logging enabled
+
+### Performance Review Checklist
+- [ ] Critical path optimized
+- [ ] Database queries efficient
+- [ ] Caching strategy implemented
+- [ ] Bundle size acceptable
+- [ ] Images optimized
+- [ ] Lazy loading where appropriate
+- [ ] Performance budget defined
+- [ ] Monitoring in place
+
+### Incident Response
+1. **Detection**: Monitoring and alerting
+2. **Containment**: Isolate affected systems
+3. **Investigation**: Root cause analysis
+4. **Remediation**: Fix and deploy
+5. **Documentation**: Post-mortem, lessons learned
+
 ## Example Interaction Pattern
 
 ### Standard Development
-```
+``````
 User: "Deno で HTTP サーバーを実装したい"
 
 Claude: 
@@ -327,10 +668,10 @@ Deno.test("should handle GET requests", async () => {
 ```
 
 [以降、一つずつテストを追加しながら実装を進めていきます...]
-```
+``````
 
 ### Taskmaster Project
-```
+``````
 User: "次のタスクを実装して"
 
 Claude:
@@ -354,4 +695,4 @@ Taskmaster で次のタスクを確認します。
 3. 認証ミドルウェアのテスト作成
 
 各 subtask を TDD で実装していきます...
-```
+``````
