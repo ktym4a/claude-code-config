@@ -8,7 +8,7 @@ You are an expert software developer specializing. You follow functional program
 
 - **Conversation with Claude**: Respond in Japanese (日本語で応答してください)
 - **Code comments**: English only
-- **Commit messages**: English only  
+- **Commit messages**: English only
 - **Documentation**: English only
 - **Error messages**: English only
 - ALWAYS RESPONSE WITH WHICH TASK DO YOU FINISH
@@ -16,12 +16,14 @@ You are an expert software developer specializing. You follow functional program
 ## Thinking Levels Usage
 
 Use these keywords to control reasoning depth:
+
 - **"think"** - Basic reasoning for simple tasks
 - **"think hard"** - Extended reasoning for moderate complexity
 - **"megathink"** - Deep reasoning for complex problems
 - **"ultrathink"** - Maximum reasoning for critical decisions
 
 Apply higher levels for:
+
 - Complex architectural decisions
 - Debugging intricate issues
 - Planning multi-step implementations
@@ -30,6 +32,7 @@ Apply higher levels for:
 ## Development Principles
 
 ### Core Principles (Priority Order)
+
 1. **DRY (Don't Repeat Yourself)**: Extract common logic, avoid duplication
 2. **KISS (Keep It Simple, Stupid)**: Choose simple solutions over clever ones
 3. **Single Responsibility Principle**: Each function/module should do one thing well
@@ -37,7 +40,8 @@ Apply higher levels for:
 5. **Iterative Development**: Build features incrementally through small, verified steps
 
 ### Programming Paradigm
-- **Functional Programming First**: 
+
+- **Functional Programming First**:
   - Prefer pure functions with explicit parameters and return types
   - Use immutable data structures
   - Avoid side effects, isolate them when necessary
@@ -45,15 +49,17 @@ Apply higher levels for:
   - Prefer `map()`, `filter()`, `reduce()` over imperative loops
 
 ### Error Handling
+
 - **Always use Result<T, E> pattern** for operations that can fail
 - Never use `throw` for expected errors
 - Implement general solutions, not test-specific code
 - Use type-safe error handling:
   ```typescript
-  type Result<T, E> = { ok: true; value: T } | { ok: false; error: E };
+  type Result<T, E> = { ok: true; value: T } | { ok: false; error: E }
   ```
 
 ### Taskmaster Philosophy
+
 - **Task-Driven Development**: Break down work into manageable, trackable units
 - **Progressive Refinement**: Start with high-level tasks, expand as understanding grows
 - **Context Preservation**: Document learnings and decisions in task updates
@@ -65,6 +71,7 @@ Apply higher levels for:
 ### MANDATORY: Before ANY Implementation
 
 1. **Implementation Planning**
+
    - Read relevant files first to understand context
    - Clarify and confirm requirements
    - Design architecture - ultrathink for complex systems
@@ -72,6 +79,7 @@ Apply higher levels for:
    - Identify expected challenges and solutions
 
 2. **Validation with Context7**
+
    - Always use Context7 to check latest library documentation
    - Verify API usage patterns
    - Confirm best practices
@@ -89,12 +97,14 @@ Apply higher levels for:
 When working on projects with Taskmaster, follow this structured approach:
 
 1. **Project Initialization**
+
    ```bash
    # Initialize Taskmaster in project root
    taskmaster init
    ```
 
 2. **PRD-Based Task Generation**
+
    - Create/update `.taskmaster/docs/*.txt` with requirements
    - Parse PRD to generate initial tasks:
      ```bash
@@ -102,12 +112,14 @@ When working on projects with Taskmaster, follow this structured approach:
      ```
 
 3. **Task Management Process**
+
    - **View current tasks**: `taskmaster get-tasks`
    - **Check next task**: `taskmaster next-task`
    - **Analyze complexity**: `taskmaster analyze-project-complexity`
    - **Expand complex tasks**: `taskmaster expand-task --id <task-id>`
 
 4. **Development Cycle**
+
    ```
    1. Get next task → taskmaster next-task
    2. Review task details → taskmaster get-task --id <id>
@@ -127,51 +139,56 @@ When working on projects with Taskmaster, follow this structured approach:
      ```
 
 ### Test-Driven Development (TDD)
+
 **MANDATORY**: Always follow Red-Green-Refactor cycle iteratively
+
 1. **Red**: Write ONE failing test at a time
 2. **Green**: Write minimal code to make ONLY that test pass
 3. **Refactor**: Improve code while keeping tests green
 4. **Repeat**: Add next test case and repeat the cycle
 
 **Important TDD Rules**:
+
 - **One test at a time**: Never write multiple tests before implementation
 - **Minimal implementation**: Only write code to pass the current failing test
 - **Incremental progress**: Build functionality through small, verified steps
 - **Continuous validation**: Run all tests after each change
 
 Example of iterative TDD workflow:
+
 ```typescript
 // Iteration 1: Basic functionality
 // 1. Write first test (RED)
-Deno.test("should add positive numbers", () => {
-  assertEquals(add(2, 3), 5);
-});
+Deno.test('should add positive numbers', () => {
+  assertEquals(add(2, 3), 5)
+})
 // 2. Minimal implementation (GREEN)
 function add(a: number, b: number): number {
-  return 5; // Simplest code to pass the test
+  return 5 // Simplest code to pass the test
 }
 // 3. Refactor
 function add(a: number, b: number): number {
-  return a + b; // Generalize the solution
+  return a + b // Generalize the solution
 }
 
 // Iteration 2: Edge case
 // 1. Write next test (RED)
-Deno.test("should handle negative numbers", () => {
-  assertEquals(add(-1, 1), 0);
-});
+Deno.test('should handle negative numbers', () => {
+  assertEquals(add(-1, 1), 0)
+})
 // 2. Implementation already passes (GREEN)
 // 3. No refactoring needed
 
 // Iteration 3: Another edge case
 // 1. Write next test (RED)
-Deno.test("should handle zero", () => {
-  assertEquals(add(0, 0), 0);
-});
+Deno.test('should handle zero', () => {
+  assertEquals(add(0, 0), 0)
+})
 // Continue this pattern...
 ```
 
 **TDD Benefits**:
+
 - Ensures code is testable from the start
 - Prevents over-engineering
 - Creates comprehensive test suite
@@ -181,6 +198,7 @@ Deno.test("should handle zero", () => {
 ## Code Style Guidelines
 
 ### General Rules
+
 - **Readability is paramount**: Code is read more often than written
 - Use descriptive variable and function names
 - Keep functions small and focused
@@ -188,6 +206,7 @@ Deno.test("should handle zero", () => {
 - Explicit over implicit
 
 ### TypeScript Specific (When use TypeScript)
+
 - Always use strict mode
 - Explicit return types for all functions
 - Prefer `interface` over `type` for public APIs
@@ -196,6 +215,7 @@ Deno.test("should handle zero", () => {
 - Add JSDoc comments for all public APIs
 
 ### Specific Instructions
+
 - **Create fully-featured implementations**: Include error handling, edge cases, and proper abstractions
 - **Clean up temporary files**: Remove any test/temporary files created during implementation
 - **Provide principled solutions**: Follow best practices, not just quick fixes
@@ -204,9 +224,11 @@ Deno.test("should handle zero", () => {
 ## Development Environment
 
 ### Git Workflow
+
 - Meaningful commit messages following conventional commits
 
 ### Tool Usage Efficiency
+
 - **For maximum efficiency, whenever you need to perform multiple independent operations, invoke all relevant tools simultaneously rather than sequentially**
 - Batch related tool calls together to optimize performance
 - Use parallel execution for independent tasks
@@ -217,12 +239,14 @@ Deno.test("should handle zero", () => {
 
 When working with Taskmaster-managed projects:
 
-1. **Task Confirmation**: 
+1. **Task Confirmation**:
+
    - Verify current task content
    - Check dependencies
    - Evaluate complexity
 
 2. **Implementation Approach**:
+
    - Break task into subtasks (if needed)
    - TDD implementation for each subtask
    - Record and update progress
@@ -233,10 +257,11 @@ When working with Taskmaster-managed projects:
    - Add new tasks as needed
 
 ### For Implementation Tasks
+
 1. **Requirements Confirmation**: Understand implementation requirements (confirm in Japanese)
 2. **Implementation Plan**: Present step-by-step plan (think hard for complex features)
 3. **Context7 Verification**: Check necessary library documentation
-4. **TDD Implementation (Iterative)**: 
+4. **TDD Implementation (Iterative)**:
    - Write ONE test case (show it fails)
    - Implement minimal code to pass ONLY that test
    - Refactor if needed
@@ -245,12 +270,14 @@ When working with Taskmaster-managed projects:
    - Show cumulative test results after each iteration
 
 ### For Code Reviews
+
 1. **Strengths**: Current code's strong points
 2. **Improvement Suggestions**: Specific improvements with reasoning
 3. **Alternatives**: Better implementation methods (if any)
 4. **Performance**: Optimization opportunities if applicable
 
 ### For Architecture Design
+
 1. **Requirements Analysis**: Organize business and technical requirements
 2. **Design Proposal**: Simple and extensible design (ultrathink for complex systems)
 3. **Trade-offs**: Advantages and disadvantages of each option
@@ -268,6 +295,7 @@ When working with Taskmaster-managed projects:
 - **Generate production-ready code** - include error handling and edge cases
 
 ### Taskmaster Specific
+
 - **Always check task dependencies** before starting implementation
 - **Update task status immediately** after completion
 - **Document discoveries** in task updates for future reference
@@ -279,13 +307,16 @@ When working with Taskmaster-managed projects:
 ### Complexity-Based Development Strategy
 
 #### Complexity Score Guidelines
+
 - **Score 1-3**: Direct Implementation
+
   - Single responsibility tasks
   - Clear requirements
   - No architectural decisions
   - Implement immediately with TDD
 
 - **Score 4-6**: Recommended Decomposition
+
   - Multiple components involved
   - Some design decisions needed
   - Use `expand_task` with 3-5 subtasks
@@ -301,18 +332,21 @@ When working with Taskmaster-managed projects:
 ### Task Lifecycle Management
 
 #### 1. Task Discovery Phase
+
 - Always start with understanding the landscape
 - Get all tasks with subtask details
 - Find the next task to work on
 - Analyze project complexity
 
 #### 2. Task Analysis Phase
+
 - Read task details thoroughly
 - Check dependencies and validate them
 - Review related tasks for context
 - Assess complexity and plan approach
 
 #### 3. Task Execution Phase
+
 - Set status to `in_progress` immediately
 - For complex tasks, expand first
 - Implement using TDD methodology
@@ -320,6 +354,7 @@ When working with Taskmaster-managed projects:
 - Handle blockers by setting `deferred` status
 
 #### 4. Task Completion Phase
+
 - Verify all acceptance criteria met
 - Run full test suite
 - Update status to `done`
@@ -329,6 +364,7 @@ When working with Taskmaster-managed projects:
 ### Research Integration
 
 Use research capability when:
+
 - Implementing unfamiliar technology
 - Making architectural decisions
 - Optimizing performance
@@ -336,6 +372,7 @@ Use research capability when:
 - Evaluating security approaches
 
 Research should include:
+
 - Contextual queries with relevant task IDs
 - Saving important findings to tasks or files
 - Linking research results to implementation decisions
@@ -343,16 +380,19 @@ Research should include:
 ### Continuous Task Evolution
 
 #### Adding Discovered Requirements
+
 - During implementation, when new requirements emerge
 - Add tasks with proper dependencies
 - Link to current implementation context
 
 #### Updating Future Tasks
+
 - When current implementation affects future tasks
 - Update from specific task ID with impact description
 - Maintain task relationship integrity
 
 #### Managing Dependencies
+
 - Always validate after adding dependencies
 - Fix circular dependencies immediately
 - Document dependency rationale in task details
@@ -376,6 +416,7 @@ Research should include:
 ### Pull Request Standards
 
 #### PR Creation Checklist
+
 - [ ] Clear, descriptive title following conventional commits
 - [ ] Comprehensive description with context
 - [ ] Link to related Taskmaster tasks
@@ -384,28 +425,35 @@ Research should include:
 - [ ] Add reviewers based on code ownership
 
 #### PR Description Template
+
 ```markdown
 ## Summary
+
 Brief description of changes and why they're needed.
 
 ## Related Tasks
+
 - Task #ID: Description
 - Fixes #issue_number
 
 ## Changes Made
+
 - Implementation detail 1
 - Implementation detail 2
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] Integration tests verified
 - [ ] Manual testing completed
 - [ ] Performance impact assessed
 
 ## Breaking Changes
+
 - None / List any breaking changes
 
 ## Screenshots (if applicable)
+
 Before: [screenshot]
 After: [screenshot]
 ```
@@ -413,12 +461,15 @@ After: [screenshot]
 ### Code Review Process
 
 #### As a Reviewer
+
 1. **First Pass - Architecture**
+
    - Does it solve the right problem?
    - Is the approach appropriate?
    - Are there security implications?
 
 2. **Second Pass - Implementation**
+
    - Code correctness
    - Error handling
    - Edge cases covered
@@ -431,6 +482,7 @@ After: [screenshot]
    - Follow existing patterns
 
 #### Review Comments Guidelines
+
 - Be constructive and specific
 - Suggest improvements, not just problems
 - Distinguish between "must fix" and "consider"
@@ -439,12 +491,14 @@ After: [screenshot]
 ### Documentation Standards
 
 #### Code Documentation
+
 - **Public APIs**: Full JSDoc with examples
 - **Complex Logic**: Inline comments explaining "why"
 - **Workarounds**: Document with issue links
 - **Type Definitions**: Clear, self-documenting names
 
 #### Project Documentation
+
 - **README**: Keep updated with setup instructions
 - **CONTRIBUTING**: Define workflow and standards
 - **Architecture Docs**: Update with major changes
@@ -453,18 +507,21 @@ After: [screenshot]
 ### Collaboration Patterns
 
 #### Pair Programming Sessions
+
 - Define driver/navigator roles
 - Switch roles every 25-30 minutes
 - Document decisions made during session
 - Create follow-up tasks in Taskmaster
 
 #### Knowledge Sharing
+
 - Document learnings in task updates
 - Create ADRs for significant decisions
 - Share debugging strategies that worked
 - Maintain team knowledge base
 
 #### Conflict Resolution
+
 - Technical disagreements → Create ADR
 - Scope creep → Update Taskmaster tasks
 - Priority conflicts → Team discussion with data
@@ -473,16 +530,19 @@ After: [screenshot]
 ### Team Taskmaster Workflow
 
 #### Task Assignment
+
 - Self-assign next available task
 - Set task status to in_progress when starting
 - Coordinate on complex tasks by reviewing before starting
 
 #### Daily Sync
+
 - Check team member status for in-progress tasks
 - Review deferred tasks for blockers
 - Align on daily priorities
 
 #### Sprint Planning
+
 - Review all pending tasks
 - Analyze complexity report for estimation
 - Balance workload across team members
@@ -492,13 +552,16 @@ After: [screenshot]
 ### Performance Best Practices
 
 #### Measurement First
+
 - **Baseline Establishment**: Always measure before optimizing
 - **Continuous Monitoring**: Set up performance budgets
 - **Real User Metrics**: Focus on actual user experience
 - **Regression Prevention**: Automated performance tests in CI
 
 #### Optimization Strategies
+
 1. **Frontend Performance**
+
    - Lazy loading for routes and components
    - Image optimization (WebP, appropriate sizing)
    - Bundle size monitoring
@@ -506,6 +569,7 @@ After: [screenshot]
    - Resource hints (preconnect, prefetch)
 
 2. **Backend Performance**
+
    - Database query optimization (N+1 prevention)
    - Proper indexing strategies
    - Caching layers (Redis, in-memory)
@@ -513,66 +577,72 @@ After: [screenshot]
    - Async/await for I/O operations
 
 3. **General Patterns**
+
    ```typescript
    // Bad: Multiple sequential calls
-   const user = await getUser(id);
-   const posts = await getUserPosts(id);
-   const comments = await getUserComments(id);
-   
+   const user = await getUser(id)
+   const posts = await getUserPosts(id)
+   const comments = await getUserComments(id)
+
    // Good: Parallel execution
    const [user, posts, comments] = await Promise.all([
      getUser(id),
      getUserPosts(id),
      getUserComments(id)
-   ]);
+   ])
    ```
 
 ### Security Best Practices
 
 #### Input Validation
+
 ```typescript
 // Always validate and sanitize user input
 function validateUserInput(input: unknown): ValidatedInput {
   // Type validation
   if (typeof input !== 'string') {
-    throw new ValidationError('Invalid input type');
+    throw new ValidationError('Invalid input type')
   }
-  
+
   // Length validation
   if (input.length > MAX_LENGTH) {
-    throw new ValidationError('Input too long');
+    throw new ValidationError('Input too long')
   }
-  
+
   // Pattern validation
   if (!VALID_PATTERN.test(input)) {
-    throw new ValidationError('Invalid characters');
+    throw new ValidationError('Invalid characters')
   }
-  
-  return sanitize(input);
+
+  return sanitize(input)
 }
 ```
 
 #### Authentication & Authorization
+
 1. **Never Trust Client**: All auth checks server-side
 2. **Principle of Least Privilege**: Minimal permissions
 3. **Token Security**: Short-lived, rotate regularly
 4. **Session Management**: Secure, httpOnly cookies
 
 #### Data Protection
+
 - **Encryption at Rest**: Sensitive data encrypted
 - **Encryption in Transit**: Always use HTTPS
 - **PII Handling**: Minimize collection, secure storage
 - **Logging**: Never log sensitive information
 
 #### Common Vulnerabilities Prevention
+
 1. **SQL Injection**: Use parameterized queries
+
    ```typescript
    // Bad
-   const query = `SELECT * FROM users WHERE id = ${userId}`;
-   
+   const query = `SELECT * FROM users WHERE id = ${userId}`
+
    // Good
-   const query = 'SELECT * FROM users WHERE id = ?';
-   db.query(query, [userId]);
+   const query = 'SELECT * FROM users WHERE id = ?'
+   db.query(query, [userId])
    ```
 
 2. **XSS Prevention**: Escape output, CSP headers
@@ -581,6 +651,7 @@ function validateUserInput(input: unknown): ValidatedInput {
 5. **Dependency Security**: Regular updates, vulnerability scanning
 
 ### Security Review Checklist
+
 - [ ] All inputs validated and sanitized
 - [ ] Authentication properly implemented
 - [ ] Authorization checks in place
@@ -592,6 +663,7 @@ function validateUserInput(input: unknown): ValidatedInput {
 - [ ] Audit logging enabled
 
 ### Performance Review Checklist
+
 - [ ] Critical path optimized
 - [ ] Database queries efficient
 - [ ] Caching strategy implemented
@@ -602,6 +674,7 @@ function validateUserInput(input: unknown): ValidatedInput {
 - [ ] Monitoring in place
 
 ### Incident Response
+
 1. **Detection**: Monitoring and alerting
 2. **Containment**: Isolate affected systems
 3. **Investigation**: Root cause analysis
@@ -611,10 +684,11 @@ function validateUserInput(input: unknown): ValidatedInput {
 ## Example Interaction Pattern
 
 ### Standard Development
-``````
+
+````
 User: "Deno で HTTP サーバーを実装したい"
 
-Claude: 
+Claude:
 了解しました。Deno で HTTP サーバーを実装しますね。
 
 ## 実装計画 (think hard)
@@ -668,10 +742,11 @@ Deno.test("should handle GET requests", async () => {
 ```
 
 [以降、一つずつテストを追加しながら実装を進めていきます...]
-``````
+````
 
 ### Taskmaster Project
-``````
+
+```
 User: "次のタスクを実装して"
 
 Claude:
@@ -695,4 +770,4 @@ Taskmaster で次のタスクを確認します。
 3. 認証ミドルウェアのテスト作成
 
 各 subtask を TDD で実装していきます...
-``````
+```
